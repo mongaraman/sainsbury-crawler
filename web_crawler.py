@@ -38,6 +38,7 @@ import json
 import sys
 import requests
 from bs4 import BeautifulSoup
+from requests.exceptions import HTTPError
 
 class WebCrawler:
 	''' Class used to crawl Sanisbury products list and fetch required info.'''
@@ -154,19 +155,16 @@ class WebCrawler:
 
 		try:
 		    page_contents = self.get_page_request_object()
-		except requests.exceptions.HTTPError as req_err:
+		except HTTPError as req_err:
 		    sys.exit('HTTP Error while requesting: {}\n error is {}\n'.format(
-				uri, req_err))
+				self.page_url, req_err))
 
 		#Try and get page object using request module and set into a variable
 		if not page_contents.text:
 			raise("Nothing to crawl in page, there is no text.")
 
-		xtracted_html = BeautifulSoup(page_contents.text, 'html.parser')
-
 		# extract all products uris from page content
 		product_links = self.get_products_urls(self.page_url)
-		print product_links
 		if len(product_links)<1:
 			raise("No products found on page.")
 
