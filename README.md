@@ -82,9 +82,8 @@ Scrapping ends here.............
 ```
 
 ##Tests
-Run tests with
-from location as sainsbury_crawlers$ python -m unittest test_web_crawler
-or
-`python -m unittest test_web_crawler -v`
-for tests with verbose output
+Run tests with following command after reaching to checked out folder location,
+sainsbury_crawler$ in this case
+
+`python -m unittest test_web_crawler`
 
