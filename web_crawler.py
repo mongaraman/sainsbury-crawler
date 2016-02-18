@@ -128,10 +128,10 @@ class WebCrawler:
 		size = '{:.2f}kb'.format(bytes / 1024)
 		
 		self.prod_attrs_list.append({
-			'title': title,
+			'title': str(title),
 			'unit_price': unit_price,
 			'size': size,
-			'description': desc
+			'description': str(desc)
 		})
 		self.final_dict["result"] = self.prod_attrs_list
 		#summation of units assign it to total dict key
